@@ -214,7 +214,6 @@
                     <camera name="camera_wrist_left" pos="0.023 0.0182 -0.10236" euler="-0.366519 0.22689 -1.5708" fovy="66" resolution="960 600"/>
                     <site name="left_ee_control_point" pos="0 0 0.0" size="0.01" rgba="0 1 0 1" />
                     <body name="openarm_left_ee_inner_finger" pos="-0.00143 -0.018 -0.068">
-                      <geom name="finger_inner_left_vis" type="mesh" class="visual" mesh="finger_inner_left" material="matte_black" />
                       <inertial pos="-0.0124991 -0.00176593 -0.0241663" quat="0.982638 0.0922084 -0.15927 -0.0235197" mass="0.125979" diaginertia="3.8543e-05 3.6883e-05 1.43942e-05" />
                       <joint name="openarm_left_finger_joint1" pos="0 0 0" axis="-1 0 0" range="0 0.7854" actuatorfrcrange="-7 7" class="motor_finger" />
                       <geom name="finger_inner_left_00" type="mesh" mesh="finger_inner_left_00" class="visual" material="matte_black" />
@@ -303,7 +302,6 @@
                     <camera name="camera_wrist_right" pos="0.023 -0.0182 -0.10236" euler="0.366519 0.22689 -1.5708" fovy="66" resolution="960 600"/>
                     <site name="right_ee_control_point" pos="0.0 0.0 0.0" size="0.01" rgba="1 0 0 1" />
                     <body name="openarm_right_ee_inner_finger" pos="-0.00143 0.018 -0.068">
-                      <geom name="finger_inner_right_vis" type="mesh" class="visual" mesh="finger_inner_right" material="matte_black" />
                       <inertial pos="-0.0124991 0.00176593 -0.0241663" quat="0.982638 -0.0922084 -0.15927 0.0235197" mass="0.125979" diaginertia="3.8543e-05 3.6883e-05 1.43942e-05" />
                       <joint name="openarm_right_finger_joint1" pos="0 0 0" axis="-1 0 0" range="-0.7854 0" actuatorfrcrange="-7 7" class="motor_finger" />
                       <geom name="finger_inner_right_00" type="mesh" mesh="finger_inner_right_00" class="visual" material="matte_black" />
