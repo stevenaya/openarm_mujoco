@@ -26,7 +26,21 @@ def asset_path(relative: str) -> str:
     from pathlib import Path
 
     p = files("openarm_mujoco.v2").joinpath(relative)
-    return str(Path(p))
+    package_path = Path(p)
+    if package_path.exists():
+        return str(package_path)
+
+    current_file = Path(__file__).resolve()
+    for parent in current_file.parents:
+        source_tree_assets = parent / "v2"
+        if not (source_tree_assets / "cell.xml").is_file():
+            continue
+
+        source_tree_path = source_tree_assets / relative
+        if source_tree_path.exists():
+            return str(source_tree_path)
+
+    return str(package_path)
 
 
 def openarm_bimanual_paths() -> list[str]:
