@@ -22,22 +22,26 @@ limitations under the License.
     <!-- <geom friction="0.0001" margin="0.0005" /> -->
     <joint stiffness="0" ref="0.0" />
     <default class="robot">
+      <!-- Armatures approximate motor rotor readouts * gear ratio squared (kg*m^2).
+           Damping references from motor readouts, assuming the same conversion (N*m*s/rad):
+           DM8009P ~0.13, DM4340 ~0.33, DM4310 ~0.03. Reference only; gearbox contributions
+           are unconfirmed. Applied damping is unchanged. -->
       <default class="motor_DM8009">
-        <joint frictionloss="0.1" damping="0.4" armature="0.0081" limited="true" type="hinge" />
-        <position kp="230" kv="2.7" forcelimited="true" forcerange="-40 40" ctrllimited="true" />
+        <joint frictionloss="0.1" damping="0.4" armature="0.016" limited="true" type="hinge" />
+        <position forcelimited="true" forcerange="-40 40" ctrllimited="true" />
       </default>
       <default class="motor_DM4340">
-        <joint frictionloss="0.1" damping="0.4" armature="0.1600" limited="true" type="hinge" />
-        <position kp="190" kv="2.2" forcelimited="true" forcerange="-27 27" ctrllimited="true" />
+        <joint frictionloss="0.1" damping="0.4" armature="0.030" limited="true" type="hinge" />
+        <position forcelimited="true" forcerange="-27 27" ctrllimited="true" />
       </default>
       <default class="motor_DM4310">
-        <joint frictionloss="0.1" damping="0.4" armature="0.0100" limited="true" type="hinge" />
-        <position kp="30" kv="1.5" forcelimited="true" forcerange="-7 7" ctrllimited="true" />
+        <joint frictionloss="0.1" damping="0.4" armature="0.002" limited="true" type="hinge" />
+        <position forcelimited="true" forcerange="-7 7" ctrllimited="true" />
       </default>
       <default class="motor_finger">
-        <joint limited="true" type="slide" damping="2" stiffness="0.5" />
-        <position forcelimited="true" forcerange="-333 333" ctrllimited="true" ctrlrange="-0.005 0.044"
-          kp="100" />
+        <!-- Approximate linkage-reflected inertia, split between two coupled fingers: 0.55 kg each. -->
+        <joint type="slide" limited="true" damping="2" stiffness="0.5" frictionloss="0" armature="0.55" />
+        <position forcelimited="true" forcerange="-333 333" ctrllimited="true" ctrlrange="-0.005 0.044" />
       </default>
       <default class="collision">
         <geom material="collision_material" condim="3" conaffinity="1" priority="1" group="3"
@@ -541,22 +545,22 @@ limitations under the License.
 
 
   <actuator>
-    <position name="left_joint1_ctrl" joint="openarm_left_joint1" class="motor_DM8009" ctrlrange="-3.490659 1.396263" />
-    <position name="left_joint2_ctrl" joint="openarm_left_joint2" class="motor_DM8009" ctrlrange="-3.3161253267948965 0.17453267320510335" />
-    <position name="left_joint3_ctrl" joint="openarm_left_joint3" class="motor_DM4340" ctrlrange="-1.570796 1.570796" />
-    <position name="left_joint4_ctrl" joint="openarm_left_joint4" class="motor_DM4340" ctrlrange="0 2.443461" />
-    <position name="left_joint5_ctrl" joint="openarm_left_joint5" class="motor_DM4310" ctrlrange="-1.570796 1.570796" />
-    <position name="left_joint6_ctrl" joint="openarm_left_joint6" class="motor_DM4310" ctrlrange="-0.785398 0.785398" />
-    <position name="left_joint7_ctrl" joint="openarm_left_joint7" class="motor_DM4310" ctrlrange="-1.570796 1.570796" />
-    <position name="left_finger1_ctrl" joint="openarm_left_finger_joint1" class="motor_finger" />
-    <position name="right_joint1_ctrl" joint="openarm_right_joint1" class="motor_DM8009" ctrlrange="-1.396263 3.490659" />
-    <position name="right_joint2_ctrl" joint="openarm_right_joint2" class="motor_DM8009" ctrlrange="-0.17453267320510335 3.3161253267948965" />
-    <position name="right_joint3_ctrl" joint="openarm_right_joint3" class="motor_DM4340" ctrlrange="-1.570796 1.570796" />
-    <position name="right_joint4_ctrl" joint="openarm_right_joint4" class="motor_DM4340" ctrlrange="0 2.443461" />
-    <position name="right_joint5_ctrl" joint="openarm_right_joint5" class="motor_DM4310" ctrlrange="-1.570796 1.570796" />
-    <position name="right_joint6_ctrl" joint="openarm_right_joint6" class="motor_DM4310" ctrlrange="-0.785398 0.785398" />
-    <position name="right_joint7_ctrl" joint="openarm_right_joint7" class="motor_DM4310" ctrlrange="-1.570796 1.570796" />
-    <position name="right_finger1_ctrl" joint="openarm_right_finger_joint1" class="motor_finger" />
+    <position name="left_joint1_ctrl" joint="openarm_left_joint1" class="motor_DM8009" kp="230" kv="2.7" ctrlrange="-3.490659 1.396263" />
+    <position name="left_joint2_ctrl" joint="openarm_left_joint2" class="motor_DM8009" kp="230" kv="2.7" ctrlrange="-3.3161253267948965 0.17453267320510335" />
+    <position name="left_joint3_ctrl" joint="openarm_left_joint3" class="motor_DM4340" kp="190" kv="2.2" ctrlrange="-1.570796 1.570796" />
+    <position name="left_joint4_ctrl" joint="openarm_left_joint4" class="motor_DM4340" kp="190" kv="2.2" ctrlrange="0 2.443461" />
+    <position name="left_joint5_ctrl" joint="openarm_left_joint5" class="motor_DM4310" kp="30" kv="1.5" ctrlrange="-1.570796 1.570796" />
+    <position name="left_joint6_ctrl" joint="openarm_left_joint6" class="motor_DM4310" kp="30" kv="1.5" ctrlrange="-0.785398 0.785398" />
+    <position name="left_joint7_ctrl" joint="openarm_left_joint7" class="motor_DM4310" kp="30" kv="1.5" ctrlrange="-1.570796 1.570796" />
+    <position name="left_finger1_ctrl" joint="openarm_left_finger_joint1" class="motor_finger" kp="10" kv="0.2" />
+    <position name="right_joint1_ctrl" joint="openarm_right_joint1" class="motor_DM8009" kp="230" kv="2.7" ctrlrange="-1.396263 3.490659" />
+    <position name="right_joint2_ctrl" joint="openarm_right_joint2" class="motor_DM8009" kp="230" kv="2.7" ctrlrange="-0.17453267320510335 3.3161253267948965" />
+    <position name="right_joint3_ctrl" joint="openarm_right_joint3" class="motor_DM4340" kp="190" kv="2.2" ctrlrange="-1.570796 1.570796" />
+    <position name="right_joint4_ctrl" joint="openarm_right_joint4" class="motor_DM4340" kp="190" kv="2.2" ctrlrange="0 2.443461" />
+    <position name="right_joint5_ctrl" joint="openarm_right_joint5" class="motor_DM4310" kp="30" kv="1.5" ctrlrange="-1.570796 1.570796" />
+    <position name="right_joint6_ctrl" joint="openarm_right_joint6" class="motor_DM4310" kp="30" kv="1.5" ctrlrange="-0.785398 0.785398" />
+    <position name="right_joint7_ctrl" joint="openarm_right_joint7" class="motor_DM4310" kp="30" kv="1.5" ctrlrange="-1.570796 1.570796" />
+    <position name="right_finger1_ctrl" joint="openarm_right_finger_joint1" class="motor_finger" kp="10" kv="0.2" />
   </actuator>
 
   <keyframe>
