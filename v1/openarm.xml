@@ -54,7 +54,7 @@ limitations under the License.
     <mesh name="link7_collision" file="collision/arm/link7.stl" scale="0.001 0.001 0.001"/>
     <mesh name="hand_collision" file="collision/gripper/hand.stl" scale="0.001 0.001 0.001"/>
     <mesh name="finger_collision" file="collision/gripper/finger.stl" scale="0.001 0.001 0.001"/>
-    <mesh name="finger_collision_left" file="collision/gripper/finger.stl" scale="0.001 -0.001 0.001"/>
+    <mesh name="finger_collision_left" file="collision/gripper/finger_left.stl" scale="0.001 0.001 0.001"/>
 
     <mesh name="link0_0.obj" file="visual/arm/link0_0.obj" scale="0.001 0.001 0.001"/>
     <mesh name="link0_1.obj" file="visual/arm/link0_1.obj" scale="0.001 0.001 0.001"/>
@@ -182,13 +182,13 @@ limitations under the License.
                     material="matte_black" contype="0" conaffinity="0" group="1" density="0" mesh="link7_1.obj"/>
                   <geom name="openarm_link7_collision" pos="0 0 -0.5585" type="mesh" material="collision_material"
                     mesh="link7_collision" class="collision"/>
-                  <geom name="openarm_hand_visual_0" pos="1e-06 0.0005 -0.5584" quat="1 0 0 0" type="mesh"
+                  <geom name="openarm_hand_visual_0" pos="0 0 -0.5585" quat="1 0 0 0" type="mesh"
                     material="metal_silver" contype="0" conaffinity="0" group="1" density="0" mesh="hand_0.obj"/>
-                  <geom name="openarm_hand_visual_1" pos="1e-06 0.0005 -0.5584" quat="1 0 0 0" type="mesh"
+                  <geom name="openarm_hand_visual_1" pos="0 0 -0.5585" quat="1 0 0 0" type="mesh"
                     material="metal_silver" contype="0" conaffinity="0" group="1" density="0" mesh="hand_1.obj"/>
-                  <geom name="openarm_hand_collision" pos="1e-06 0.0005 -0.5584" quat="1 0 0 0" type="mesh"
+                  <geom name="openarm_hand_collision" pos="0 0 -0.5585" quat="1 0 0 0" type="mesh"
                     material="collision_material" mesh="hand_collision" class="collision"/>
-                  <body name="openarm_right_finger" pos="1e-06 -0.0045 0.1151">
+                  <body name="openarm_right_finger" pos="0 -0.005 0.1151">
                     <inertial pos="0.0064528 -0.01702 0.0219685" quat="1.0 0.0 0.0 0.0" mass="0.03602545343277134"
                       diaginertia="2.3749999999999997e-06 2.3749999999999997e-06 7.5e-07"/>
                     <joint name="openarm_finger_joint1" type="slide" ref="0.0" class="motor" range="0.0 0.044"
@@ -200,7 +200,7 @@ limitations under the License.
                     <geom name="openarm_right_finger_collision" pos="0 0.05 -0.673001" quat="1 0 0 0" type="mesh"
                       material="collision_material" mesh="finger_collision_left" class="collision"/>
                   </body>
-                  <body name="openarm_left_finger" pos="1e-06 0.0075 0.1151">
+                  <body name="openarm_left_finger" pos="0 0.005 0.1151">
                     <inertial pos="0.0064528 0.01702 0.0219685" quat="1.0 0.0 0.0 0.0" mass="0.03602545343277134"
                       diaginertia="2.3749999999999997e-06 2.3749999999999997e-06 7.5e-07"/>
                     <joint name="openarm_finger_joint2" type="slide" ref="0.0" class="motor" range="0.0 0.044"
