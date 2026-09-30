@@ -40,7 +40,7 @@ limitations under the License.
       </default>
       <default class="motor_finger">
         <!-- Approximate linkage-reflected inertia, split between two coupled fingers: 0.55 kg each. -->
-        <joint type="slide" limited="true" damping="2" frictionloss="0" armature="0.55" />
+        <joint type="slide" limited="true" damping="9" frictionloss="0" armature="0.55" />
         <position forcelimited="true" forcerange="-333 333" ctrllimited="true" ctrlrange="-0.005 0.044" />
       </default>
       <default class="collision">
